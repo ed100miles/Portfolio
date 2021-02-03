@@ -1,5 +1,6 @@
 .scrabblePage{
     font-family: 'Franklin Gothic Medium', 'sans-serif';
+    margin-bottom: 2vh;
 }
 
 .board{
@@ -51,3 +52,39 @@
 .link-button:active {
     color:red;
   }
+
+.flexContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.flexItem{
+  flex-grow: 1;
+  min-width: 300px;
+  max-width: 48vw;
+  background-color: rgba(82, 168, 238, 0.294);
+  max-height: 40vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  margin: 2vw;
+  padding: 1vw;
+  font-size: clamp(2vw, 2vw, 10px);
+  border-radius: 0.5rem;
+}
+
+.inputIsNumber{
+  -moz-appearance:textfield;
+}
+
+.inputIsNumber::-webkit-outer-spin-button,
+.inputIsNumber::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+}
+
+.flexItem button{
+  margin-top: 2px;
+  width: 15vw;
+  max-height: 5vw;
+  font-size: clamp(1.5vw, 1.5vw, 10px);
+}

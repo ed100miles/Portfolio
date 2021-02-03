@@ -8,60 +8,57 @@
 
 <h1>Scrabble Cheat</h1>
 
-<div class="container-fluid">
-    <form action="{{ url_for ('scrabbler')}}" method="post">
+<div class="flexContainer">
+    <form action="{{ url_for ('scrabbler')}}" method="post" class="flexItem">
         <input type="text" name="game_name" placeholder="Enter game name"  value="{{game_name}}" required><br/>
         <br/>
         <input type="text" name="played_word" placeholder="What word did you play?"><br/>
         <label>Enter the tile co-cordinates for the first letter of your word. Hover over the tile for the co-ordinates. </label><br/>
-        <input type="number" name="ycoord" placeholder="X-coordinate" min="0" max="15"><br/>
-        <input type="number" name="xcoord" placeholder="Y-coordinate" min="0" max="15"><br/>
+        <input type="number" name="ycoord" placeholder="X-coordinate" min="0" max="15" class="inputIsNumber"><br/>
+        <input type="number" name="xcoord" placeholder="Y-coordinate" min="0" max="15" class="inputIsNumber"><br/>
         <input type="radio" id="d" name="direction" value="d">
         <label for="d">Play down</label>
         <input type="radio" id="a" name="direction" value="a" checked>
         <label for="a">Play across</label>
         <br/>
-        </button><input type="submit" value="Play Move" class="btn btn-secondary">
-        <button type="reset" class="btn btn-secondary">Reset form</button>
+        <button type="submit" class="btn btn-secondary">Play Move</button>
         <br/>
         <p>Need help? I'll find you some words...</p>
-        <input type="text" name="letters" placeholder="What are your letters?">
-        </button><input type="submit" value="Get Words" class="btn btn-secondary">
+        <input type="text" name="letters" placeholder="What are your letters?"><br/>
+        <button type="submit" class="btn btn-secondary">Get Words</button>
+        <button type="reset" class="btn btn-secondary">Reset form</button><br/>
     </form>
+
+    <div class="flexItem">
+        <p>Words you can play:
+            <br/>
+            <span>(click the word for the definition)</span>
+            <br/>
+            <ul>
+                {% if valid_words is not none %}
+                    {% for word in valid_words %}
+                    <p>
+                        <form method="post" action="{{ url_for ('definition_page')}}" target="blank" class="inline">
+                            <input type="hidden">
+                            <button type="submit" name="wordToDefine" value="{{word.0}}" class="link-button">
+                                {{word.0}}
+                            </button>
+                        </form>
+                        &emsp;       &ensp; scores: {{word.1}}
+                    </p>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </p>
+    </div>
 </div>
 
-<br/>
+    <div class="board">
+        {% for square in board %}
+            <span class="square" data-tooltip="{{square.1}},{{square.0}}"><span class="squareTxt">{{square.2}}</span></span>
+        {% endfor %}
+    </div>
 
-<div class="board">
-    {% for square in board %}
-        <span class="square" data-tooltip="{{square.1}},{{square.0}}"><span class="squareTxt">{{square.2}}</span></span>
-    {% endfor %}
-</div>
-
-<h1>You can play...  </h1>
-
-<div id="scrabbleResults">
-    <p>Words you can play:
-        <br/>
-        <span>(click the word for the definition)</span>
-        <br/>
-        <ul>
-            {% if valid_words is not none %}
-                {% for word in valid_words %}
-                <p>
-                    <form method="post" action="{{ url_for ('definition_page')}}" target="blank" class="inline">
-                        <input type="hidden">
-                        <button type="submit" name="wordToDefine" value="{{word.0}}" class="link-button">
-                            {{word.0}}
-                        </button>
-                    </form>
-                    &emsp;       &ensp; scores: {{word.1}}
-                </p>
-                {% endfor %}
-            {% endif %}
-        </ul>
-    </p>
-</div>
 </div>
 {% endblock %}
 
