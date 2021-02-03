@@ -102,7 +102,8 @@ def scrabbler():
         return render_template('scrabbler.html',  board=board, game_name=game_name, valid_words=valid_words)
 
     else:
-        return render_template('scrabbler.html')
+        board = initialise_board()
+        return render_template('scrabbler.html', board=board)
 
 @app.route('/scrabbler/definition_page', methods=['GET', 'POST'])
 def definition_page():
@@ -110,7 +111,6 @@ def definition_page():
     wordDefinition = Definitions.query.filter_by(wordsToDefine=wordToDefine).first()
     wordDefinition = wordDefinition.wordDefinition
     return render_template('definition_page.html', wordToDefine=wordToDefine, wordDefinition=wordDefinition)
-
 
 if __name__ == "__main__":
     app.run(debug=True)

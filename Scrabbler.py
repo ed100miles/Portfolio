@@ -1,3 +1,5 @@
+import datetime as datetime
+
 def initialise_board():
     board = []
     for x_coord in range(15):
@@ -112,11 +114,12 @@ def wordRanker(words_with_scores):
     return results
 
 def wordFinder(user_input, board):
-    valid_words = []
+    valid_words = set()
     wordsList = list((open("/home/ed/Documents/VSCode/scrabbler/ScrabbleCheater1.0/scrabbleWords.txt")).read())
     word = ""
     listOfWords = []
-    board_letters = ""
+    board_letters = set()
+
     for char in wordsList:
         if char != "\n":
             word = str(word) + str(char)
@@ -125,54 +128,33 @@ def wordFinder(user_input, board):
             word = ""
 
     for element in board:
-        if element[2] != "":
-            board_letters += element[2]
-            print("number of letters on board = ", len(board_letters))
-            
-    if board_letters != "":
-        for board_letter in board_letters:
-            board_letter = board_letter.lower()
-            user_input_and_board_letter = user_input + board_letter
-            for theWord in listOfWords:
-                alphabet = "abcdefghijklmnopqrstuvwxyz"
-                user_letters_dict = dict.fromkeys(list(alphabet), 0)
-                listOfWords_dict = dict.fromkeys(list(alphabet), 0)
+        board_letters.add(element[2])
 
-                for i in range(len(user_input_and_board_letter)):
-                    user_letters_dict[user_input_and_board_letter[i]] += 1
-
-                for i in range(len(theWord)):
-                    listOfWords_dict[theWord[i]] += 1
-
-                missing_letters = 0
-
-                for x in user_letters_dict:
-                
-                    if user_letters_dict[x] < listOfWords_dict[x]:
-                        missing_letters += 1
-
-                if missing_letters == 0:
-                    valid_words.append(theWord)
-    else:
+    for board_letter in board_letters:
+        user_input_and_board_letter = user_input + board_letter.lower()
         for theWord in listOfWords:
             alphabet = "abcdefghijklmnopqrstuvwxyz"
             user_letters_dict = dict.fromkeys(list(alphabet), 0)
             listOfWords_dict = dict.fromkeys(list(alphabet), 0)
-            for i in range(len(user_input)):
-                user_letters_dict[user_input[i]] += 1
+
+            for i in range(len(user_input_and_board_letter)):
+                user_letters_dict[user_input_and_board_letter[i]] += 1
+
             for i in range(len(theWord)):
                 listOfWords_dict[theWord[i]] += 1
+
             missing_letters = 0
+
             for x in user_letters_dict:
+            
                 if user_letters_dict[x] < listOfWords_dict[x]:
                     missing_letters += 1
-            if missing_letters == 0:
-                valid_words.append(theWord)
-    word_list = set()
+                    break
 
-    for word in valid_words:
-        word_list.add((word))
-    return word_list
+            if missing_letters == 0:
+                valid_words.add(theWord)
+
+    return valid_words
 
 #board = initialise_board()
 #
