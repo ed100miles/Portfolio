@@ -1,4 +1,6 @@
-from datetime import datetime
+import os
+
+dirname = os.path.dirname(__file__)
 
 def initialise_board():
     board = []
@@ -60,7 +62,7 @@ def play_move(enough_room, board, played_word, word_start_x, word_start_y, down_
 
 def wordDefiner(wordsToDefine):
 
-    wordsList = list((open("/home/ed/Documents/VSCode/scrabbler/ScrabbleCheater1.0/scrabbleWordsAndDef.txt")).read())
+    wordsList = list((open(os.path.join(dirname, 'scrabbleWordsAndDef.txt')).read()))
 
     word = ""
     listOfWords = []
@@ -116,7 +118,7 @@ def wordRanker(words_with_scores):
 
 def wordFinder(user_input, board):
     valid_words = set()
-    listOfWords =  ((open("/home/ed/Documents/VSCode/scrabbler/ScrabbleCheater1.0/scrabbleWords.txt")).read()).lower().splitlines()
+    listOfWords =  ((open(os.path.join(dirname, 'scrabbleWords.txt'))).read()).lower().splitlines()
     board_letters = set()
 
     for element in board:
