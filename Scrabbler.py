@@ -1,4 +1,4 @@
-import datetime as datetime
+from datetime import datetime
 
 def initialise_board():
     board = []
@@ -32,6 +32,7 @@ def is_there_room(board, played_word, word_start_x, word_start_y, down_or_across
             enough_room = False
         else:
             enough_room = True
+
     return enough_room
     # enough_room = is_there_room(board, played_word, word_start_x, word_start_y, down_or_across)
 
@@ -115,17 +116,8 @@ def wordRanker(words_with_scores):
 
 def wordFinder(user_input, board):
     valid_words = set()
-    wordsList = list((open("/home/ed/Documents/VSCode/scrabbler/ScrabbleCheater1.0/scrabbleWords.txt")).read())
-    word = ""
-    listOfWords = []
+    listOfWords =  ((open("/home/ed/Documents/VSCode/scrabbler/ScrabbleCheater1.0/scrabbleWords.txt")).read()).lower().splitlines()
     board_letters = set()
-
-    for char in wordsList:
-        if char != "\n":
-            word = str(word) + str(char)
-        else:
-            listOfWords.append(str(word.lower()))
-            word = ""
 
     for element in board:
         board_letters.add(element[2])
