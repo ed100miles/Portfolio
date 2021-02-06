@@ -9,9 +9,10 @@
 <h1>Scrabble Cheat</h1>
 
 <div class="flexContainer">
-    <form action="{{ url_for ('scrabbler')}}" method="post" class="flexItem">
+    <form action="{{ url_for ('scrabbler')}}" method="post" class="flexItem" id="scrabbleForm">
+        <label>Name your game. This will allow you to save words on the board. Then you can find words you can play with the letters you have and what's on the board. </label>
         <input type="text" name="game_name" placeholder="Enter game name"  value="{{game_name}}" required><br/>
-        <br/>
+        <hr/>
         <input type="text" name="played_word" placeholder="What word did you play?"><br/>
         <label>Enter the tile co-cordinates for the first letter of your word. Hover over the tile for the co-ordinates. </label><br/>
         <input type="number" name="ycoord" placeholder="X-coordinate" min="0" max="15" class="inputIsNumber"><br/>
@@ -22,14 +23,14 @@
         <label for="a">Play across</label>
         <br/>
         <button type="submit" class="btn btn-secondary">Play Move</button>
-        <br/>
+        <hr/>
         <p>Need help? I'll find you some words...</p>
         <input type="text" name="letters" placeholder="What are your letters?"><br/>
         <button type="submit" class="btn btn-secondary">Get Words</button>
         <button type="reset" class="btn btn-secondary">Reset form</button><br/>
     </form>
 
-    <div class="flexItem">
+    <div class="flexItem" id="scrabbleWords">
         <p>Words you can play:
             <br/>
             <span>(click the word for the definition)</span>

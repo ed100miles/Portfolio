@@ -64,13 +64,15 @@
   min-width: 300px;
   max-width: 48vw;
   background-color: rgba(82, 168, 238, 0.294);
-  max-height: 40vh;
-  overflow: scroll;
-  overflow-x: hidden;
   margin: 2vw;
   padding: 1vw;
-  font-size: clamp(2vw, 2vw, 10px);
+  font-size: clamp(8px, 2.5vw, 25px);
   border-radius: 0.5rem;
+}
+
+#scrabbleWords{
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .inputIsNumber{
@@ -86,5 +88,5 @@
   margin-top: 2px;
   width: 15vw;
   max-height: 5vw;
-  font-size: clamp(1.5vw, 1.5vw, 10px);
+  font-size: clamp(1.5vw, 1.5vw, 3px);
 }
