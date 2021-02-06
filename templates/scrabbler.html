@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block body %}
-<div class="scrabblePage">
+
+<div class="pageContent scrabblePage" >
 
 <h1>Scrabble Cheat</h1>
 
@@ -14,7 +15,7 @@
         <input type="text" name="game_name" placeholder="Enter game name"  value="{{game_name}}" required><br/>
         <hr/>
         <input type="text" name="played_word" placeholder="What word did you play?"><br/>
-        <label>Enter the tile co-cordinates for the first letter of your word. Hover over the tile for the co-ordinates. </label><br/>
+        <label>Enter the tile co-ordinates for the first letter of your word. Hover over the tile for the co-ordinates. </label><br/>
         <input type="number" name="ycoord" placeholder="X-coordinate" min="0" max="15" class="inputIsNumber"><br/>
         <input type="number" name="xcoord" placeholder="Y-coordinate" min="0" max="15" class="inputIsNumber"><br/>
         <input type="radio" id="d" name="direction" value="d">

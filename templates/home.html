@@ -4,6 +4,29 @@
 {% endblock %}
 
 {% block body %}
-<h1>Home </h1>
+
+<h1 class="slideIn fade-in">Hi! I'm Ed Miles... </h1>
+<br/>
+<div class="intro">
+    <img src="{{url_for('static', filename='/imgs/me.JPG') }}" class="meImg">
+    <p>Thanks for visiting my site.</p>
+
+    <p>I live in London and currently work in finance. But since buying my first Raspberry Pi a few 
+         years ago, all I've wanted to do is code. I've mainly been learning Python, and I've picked up 
+        lots of other <a href="#">skills</a> along the way. 
+    </p>
+
+    <p>
+        Now I want to turn my hobby into a career. So if you're looking for someone smart, hard working and eager to keep learning, 
+        please <a href="#">get in contact</a>.
+    </p>
+
+    <p>
+        If you're interested in seeing some of my code, why not <a href="#">check out my project.</a> 
+        The video below gives you a sneak peak at what it does, and you can find the source code on my <a href="#">github</a>.
+    </p>
+
+</div>
+
 {% endblock %}
 

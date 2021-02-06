@@ -1,6 +1,50 @@
+body{
+  background-color: rgb(177, 193, 238);
+}
+
+h1{
+  margin-top: 2vh;
+  margin-left: 8vw;
+  animation: fadeIn ease 3s;
+  font-size: clamp(30px, 10vw, 60px);
+}
+
+p {
+  margin-left: 4vw;
+  margin-right: 1vw;
+  font-size: clamp(20px, 2.5vw, 30px);
+}
+
+.intro{
+  margin-top: 10vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+.meImg{
+  margin-left: 5vw;
+  margin-right: 3vw;
+  border-radius: 10%;
+  height:auto;
+  width: 45vw;
+  float: left;
+}
+
+.slideIn{
+  position: absolute;
+  animation-name: slideIn;
+  animation-duration: 1s;
+}
+
+@keyframes slideIn{
+  from{transform: translateX(100vw)}
+  to{transform: translateX(0vw)}
+}
+
 .scrabblePage{
     font-family: 'Franklin Gothic Medium', 'sans-serif';
     margin-bottom: 2vh;
+    background-color: rgb(192, 216, 255);
 }
 
 .board{
@@ -19,8 +63,6 @@
     height: 6vw;
     text-align: center;
     font-size: 4vw;
-
-    /* position: relative; */
 }
 
 .square:hover::before{
@@ -68,6 +110,10 @@
   padding: 1vw;
   font-size: clamp(8px, 2.5vw, 25px);
   border-radius: 0.5rem;
+}
+
+#scrabbleForm{
+  max-height: 100vh;
 }
 
 #scrabbleWords{
