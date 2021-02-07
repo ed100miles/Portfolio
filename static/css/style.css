@@ -1,5 +1,7 @@
+/* General attributes */
+
 body{
-  background-color: rgb(177, 193, 238);
+  background-color: rgb(177, 179, 184);
 }
 
 h1{
@@ -15,6 +17,8 @@ p {
   font-size: clamp(20px, 2.5vw, 30px);
 }
 
+/* Home.html attributes */
+
 .intro{
   margin-top: 10vh;
   margin-left: 10vw;
@@ -27,19 +31,11 @@ p {
   border-radius: 10%;
   height:auto;
   width: 45vw;
+  max-width: 600px;
   float: left;
 }
 
-.slideIn{
-  position: absolute;
-  animation-name: slideIn;
-  animation-duration: 1s;
-}
-
-@keyframes slideIn{
-  from{transform: translateX(100vw)}
-  to{transform: translateX(0vw)}
-}
+/* Scrabbler.html element attributes */
 
 .scrabblePage{
     font-family: 'Franklin Gothic Medium', 'sans-serif';
@@ -114,6 +110,8 @@ p {
 
 #scrabbleForm{
   max-height: 100vh;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 #scrabbleWords{
@@ -135,4 +133,40 @@ p {
   width: 15vw;
   max-height: 5vw;
   font-size: clamp(1.5vw, 1.5vw, 3px);
+}
+
+/* Skills page attributes */
+
+.skills-img{
+  width: 90%;
+  height: auto;
+}
+
+.subheading{
+  margin-top: 2vh;
+  margin-left: 10vw;
+  animation: fadeIn ease 3s;
+  font-size: clamp(20px, 4vw, 45px);
+}
+
+/* Animations */
+
+.slideIn{
+  position: absolute;
+  animation-name: slideIn;
+  animation-duration: 1s;
+}
+
+@keyframes slideIn{
+  from{transform: translateX(100vw)}
+  to{transform: translateX(0vw)}
+}
+
+.fadeIn{
+  animation-name: fadeIn;
+  animation-duration: 4s;
+}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
 }

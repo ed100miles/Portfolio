@@ -5,10 +5,10 @@
 
 {% block body %}
 
-<div class="pageContent scrabblePage" >
+<div class="pageContent scrabblePage fadeIn" >
 
-<h1>Scrabble Cheat</h1>
-
+<h1 class="slideIn">Scrabble Cheat</h1>
+<br/><br/><br/>
 <div class="flexContainer">
     <form action="{{ url_for ('scrabbler')}}" method="post" class="flexItem" id="scrabbleForm">
         <label>Name your game. This will allow you to save words on the board. Then you can find words you can play with the letters you have and what's on the board. </label>
@@ -26,7 +26,7 @@
         <button type="submit" class="btn btn-secondary">Play Move</button>
         <hr/>
         <p>Need help? I'll find you some words...</p>
-        <input type="text" name="letters" placeholder="What are your letters?"><br/>
+        <input type="text" name="letters" placeholder="What are your letters?"><br/><br/>
         <button type="submit" class="btn btn-secondary">Get Words</button>
         <button type="reset" class="btn btn-secondary">Reset form</button><br/>
     </form>
