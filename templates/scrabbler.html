@@ -54,13 +54,13 @@
         </p>
     </div>
 </div>
-
-    <div class="board">
-        {% for square in board %}
-            <span class="square" data-tooltip="{{square.1}},{{square.0}}"><span class="squareTxt">{{square.2}}</span></span>
-        {% endfor %}
+    <div class="board-container">
+        <div class="board">
+            {% for square in board %}
+                <span class="square" data-tooltip="{{square.1}},{{square.0}}"><span class="squareTxt">{{square.2}}</span></span>
+            {% endfor %}
+        </div>
     </div>
-
 </div>
 {% endblock %}
 

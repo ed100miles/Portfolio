@@ -1,12 +1,15 @@
 /* General attributes */
 
 body{
+  padding-top: 65px;
+  margin-left: 5vw;
+  margin-right: 5vw;
   background-color: rgb(177, 179, 184);
 }
 
 h1{
-  margin-top: 2vh;
-  margin-left: 8vw;
+  /* margin-top: 2vh; */
+  /* margin-left: 8vw; */
   animation: fadeIn ease 3s;
   font-size: clamp(30px, 10vw, 60px);
 }
@@ -18,12 +21,6 @@ p {
 }
 
 /* Home.html attributes */
-
-.intro{
-  margin-top: 10vh;
-  margin-left: 10vw;
-  margin-right: 10vw;
-}
 
 .meImg{
   margin-left: 5vw;
@@ -38,15 +35,23 @@ p {
 /* Scrabbler.html element attributes */
 
 .scrabblePage{
+  /* This is a scrabble looking font aparently */
     font-family: 'Franklin Gothic Medium', 'sans-serif';
     margin-bottom: 2vh;
-    background-color: rgb(192, 216, 255);
+}
+
+.board-container{
+  margin: auto;
+  width: 50%;
+  padding-bottom: 1vh;
 }
 
 .board{
     display: grid;
-    grid-template-columns: repeat(15, 6vw);
-    margin-left: 5vw;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(15, 3vw);
+    /* margin-left: 5vw; */
     margin-bottom: 1vh;
 }
 
@@ -56,9 +61,10 @@ p {
     align-items: center;
     border: 1px solid green;
     background-color: rgb(221, 220, 155);
-    height: 6vw;
+    height: 3vw;
+    width: 3vw;
     text-align: center;
-    font-size: 4vw;
+    font-size: 2vw;
 }
 
 .square:hover::before{
