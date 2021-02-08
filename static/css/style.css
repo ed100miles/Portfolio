@@ -40,19 +40,20 @@ p {
     margin-bottom: 2vh;
 }
 
-.board-container{
-  margin: auto;
-  width: 50%;
-  padding-bottom: 1vh;
-}
-
+/* .board-container{ */
+  /* margin: auto; */
+  /* width: 50%; */
+  /* padding-bottom: 1vh; */
+/* } */
+/*  */
 .board{
     display: grid;
     align-items: center;
     justify-items: center;
-    grid-template-columns: repeat(15, 3vw);
+    grid-template-columns: repeat(15, 4vw);
     /* margin-left: 5vw; */
     margin-bottom: 1vh;
+    max-width: 500px;
 }
 
 .square{
@@ -61,10 +62,10 @@ p {
     align-items: center;
     border: 1px solid green;
     background-color: rgb(221, 220, 155);
-    height: 3vw;
-    width: 3vw;
+    height: 4vw;
+    width: 4vw;
     text-align: center;
-    font-size: 2vw;
+    font-size: 3vw;
 }
 
 .square:hover::before{
@@ -112,12 +113,6 @@ p {
   padding: 1vw;
   font-size: clamp(8px, 2.5vw, 25px);
   border-radius: 0.5rem;
-}
-
-#scrabbleForm{
-  max-height: 100vh;
-  overflow: auto;
-  overflow-x: hidden;
 }
 
 #scrabbleWords{
