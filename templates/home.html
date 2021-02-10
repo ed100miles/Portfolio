@@ -5,26 +5,30 @@
 
 {% block body %}
 
-<div class="intro fadeIn">
+<div class="fadeIn">
     <h1>Hi! I'm Ed Miles... </h1>
-    <img src="{{url_for('static', filename='/imgs/me.JPG') }}" class="meImg">
-    <p>Thanks for visiting my site.</p>
+    <div class="img-div">
+        <img src="{{url_for('static', filename='/imgs/me.JPG') }}" class="meImg">
+    </div>
 
-    <p>I live in London and currently work in finance. But since buying my first Raspberry Pi a few 
-         years ago, all I've wanted to do is code. I've mainly been learning Python, but I've picked up 
-        lots of other <a href="{{ url_for ('skills')}}">skills</a> along the way. 
-    </p>
+    <div>
+        <p>Thanks for visiting my site.</p>
 
-    <p>
-        Now I want to turn my hobby into a career. So if you're looking for someone smart, hard working and eager to keep learning, 
-        please get in <a href="mailto:ed100miles@gmail.com">contact</a>.
-    </p>
+        <p>I live in London and currently work in finance. But since buying my first Raspberry Pi a few 
+             years ago, all I've wanted to do is code. I've mainly been learning Python, but I've picked up 
+            lots of other <a href="{{ url_for ('skills')}}">skills</a> along the way. 
+        </p>
 
-    <p>
-        If you're interested in seeing what I can do, why not check out my <a href="{{ url_for ('scrabbler')}}">project.</a> 
-        The video below gives you a sneak peak at what it does, and you can find the source code on my <a target="_blank" href="https://github.com/ed100miles/Portfolio">github</a>.
-    </p>
+        <p>
+            Now I want to turn my hobby into a career. So if you're looking for someone smart, hard working and eager to keep learning, 
+            please get in <a href="mailto:ed100miles@gmail.com">contact</a>.
+        </p>
 
+        <p>
+            If you're interested in seeing what I can do, why not check out my <a href="{{ url_for ('scrabbler')}}">project.</a> 
+            The video below gives you a sneak peak at what it does, and you can find the source code on my <a target="_blank" href="https://github.com/ed100miles/Portfolio">github</a>.
+        </p>
+    </div>
 </div>
 
 {% endblock %}

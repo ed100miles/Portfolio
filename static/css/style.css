@@ -8,8 +8,7 @@ body{
 }
 
 h1{
-  /* margin-top: 2vh; */
-  /* margin-left: 8vw; */
+  text-align: center;
   animation: fadeIn ease 3s;
   font-size: clamp(30px, 10vw, 60px);
 }
@@ -21,15 +20,23 @@ p {
 }
 
 /* Home.html attributes */
+.img-div{
+  width: 105vw;
+  background-color:rgb(36, 57, 95);
+  transform: translateX(-5vw);
+}
 
 .meImg{
-  margin-left: 5vw;
-  margin-right: 3vw;
+  padding: 1vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10%;
   height:auto;
-  width: 45vw;
-  max-width: 600px;
-  float: left;
+  width: 50%;
+  max-width: 400px;
+  transform: translateX(-5vw);
+  /* float: left; */
 }
 
 /* Scrabbler.html element attributes */
@@ -40,38 +47,37 @@ p {
     margin-bottom: 2vh;
 }
 
-/* .board-container{ */
-  /* margin: auto; */
-  /* width: 50%; */
-  /* padding-bottom: 1vh; */
-/* } */
-/*  */
+.scrabbleDropdown{
+  text-align: center;
+  margin-bottom: 1vh;
+}
+
 .board{
     display: grid;
     align-items: center;
-    justify-items: center;
-    grid-template-columns: repeat(15, 4vw);
-    /* margin-left: 5vw; */
+    justify-content: center;
+    grid-template-columns: repeat(15, 3vh);
     margin-bottom: 1vh;
-    max-width: 500px;
+    text-align: center;
 }
 
 .square{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid green;
-    background-color: rgb(221, 220, 155);
-    height: 4vw;
-    width: 4vw;
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(255, 251, 230);
+    height: 3vh;
+    width: 3vh;
     text-align: center;
-    font-size: 3vw;
+    font-size: 2.5vh;
 }
 
 .square:hover::before{
     background-color: rgb(91, 156, 100);
     content: attr(data-tooltip);
-    transform: translateY(-100%);
+    transform: translateY(+100%);
+    transform: translateX(+50%);
     font-size: 2vw;
     width: 6vw;
 }
@@ -101,23 +107,19 @@ p {
 .flexContainer{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
-.flexItem{
-  flex-grow: 1;
-  min-width: 300px;
-  max-width: 48vw;
-  background-color: rgba(82, 168, 238, 0.294);
-  margin: 2vw;
-  padding: 1vw;
-  font-size: clamp(8px, 2.5vw, 25px);
-  border-radius: 0.5rem;
-}
-
-#scrabbleWords{
+.scrabbleWords{
+  font-size: clamp(20px, 2.5vw, 30px);
+  text-align: center;
   overflow: scroll;
   overflow-x: hidden;
+  height: 50vh;
+  /* margin-left: 20vw; */
+  max-height: 50vh;
+  max-width: 50vw;
+  background-color:rgb(147, 175, 150);
 }
 
 .inputIsNumber{
@@ -127,13 +129,6 @@ p {
 .inputIsNumber::-webkit-outer-spin-button,
 .inputIsNumber::-webkit-inner-spin-button{
   -webkit-appearance: none;
-}
-
-.flexItem button{
-  margin-top: 2px;
-  width: 15vw;
-  max-height: 5vw;
-  font-size: clamp(1.5vw, 1.5vw, 3px);
 }
 
 /* Skills page attributes */

@@ -5,13 +5,15 @@
 
 {% block body %}
 
+<div class="scrabblePage fadeIn">
+
 <h1>Scrabble Cheat</h1>
-<div class="dropdown">
+<div class="dropdown scrabbleDropdown">
     <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
       Actions
     </button>
-    <div class="dropdown-menu">
-        <form class="px-4 py-3" action="{{ url_for ('scrabbler')}}" method="post" class="flexItem" id="scrabbleForm">
+    <div class="dropdown-menu text-center">
+        <form class="px-4 py-3" action="{{ url_for ('scrabbler')}}" method="post" class="flexItem" id="scrabbleForm" onsubmit="loadbar()">
           <div class="mb-3">
             <label class="form-label">Name your game. This will allow you to save words on the board. Then you can find words you can play with the letters you have and what's on the board. </label>
             <input class="form-control" type="text" name="game_name" placeholder="Enter game name"  value="{{game_name}}" required><br/>    
@@ -25,45 +27,45 @@
             <label for="a">Play across</label>
             <hr/>
             <label class="form-label">Put in your letters and I'll find you words</label>
-            <input class="form-control" type="text" name="letters" placeholder="What are your letters?"><br/><br/>
+            <input class="form-control" type="text" name="letters" placeholder="What are your letters?">
+            <br/>
           <button type="submit" class="btn btn-primary">Play Move</button>
           <button type="submit" class="btn btn-primary">Get Words</button>
           <button type="submit" class="btn btn-primary">Reset Form</button>
+          <br><br>
+          <progress id="wordProgressBar" max="100" value="1"></progress>
+          </div>
         </form>
     </div>
 </div>
 
-<div class="scrabblePage fadeIn">
-    <div class="flexContainer">
-    <div class="board-container">
-        <div class="board">
-            {% for square in board %}
-                <span class="square" data-tooltip="{{square.1}},{{square.0}}"><span class="squareTxt">{{square.2}}</span></span>
-            {% endfor %}
-        </div>
+<div class="flexContainer">
+<div class="board">
+    {% for square in board %}
+        <span class="square" data-tooltip="{{square.1}},{{square.0}}"><span class="squareTxt">{{square.2}}</span></span>
+    {% endfor %}
+</div>
+
+<div class="scrabbleWords">
+    <div><h2>Words you can play:</h2>
+        <p>(click the word for the definition)</p>
+        <ul>
+            {% if valid_words is not none %}
+                {% for word in valid_words %}
+                <p>
+                    <form method="post" action="{{ url_for ('definition_page')}}" target="blank" class="inline">
+                        <input type="hidden">
+                        <button type="submit" name="wordToDefine" value="{{word.0}}" class="link-button">
+                            {{word.0}}
+                        </button>
+                    </form>
+                    &emsp;       &ensp; scores: {{word.1}}
+                </p>
+                {% endfor %}
+            {% endif %}
+        </ul>
     </div>
-    <div class="flexItem" id="scrabbleWords">
-        <p>Words you can play:
-            <br/>
-            <span>(click the word for the definition)</span>
-            <br/>
-            <ul>
-                {% if valid_words is not none %}
-                    {% for word in valid_words %}
-                    <p>
-                        <form method="post" action="{{ url_for ('definition_page')}}" target="blank" class="inline">
-                            <input type="hidden">
-                            <button type="submit" name="wordToDefine" value="{{word.0}}" class="link-button">
-                                {{word.0}}
-                            </button>
-                        </form>
-                        &emsp;       &ensp; scores: {{word.1}}
-                    </p>
-                    {% endfor %}
-                {% endif %}
-            </ul>
-        </p>
-    </div>
+</div>
 </div>
 
 </div>
