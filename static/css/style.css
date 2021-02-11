@@ -21,7 +21,7 @@ p {
 
 /* Home.html attributes */
 .img-div{
-  width: 105vw;
+  width: 100vw;
   background-color:rgb(36, 57, 95);
   transform: translateX(-5vw);
 }
@@ -111,15 +111,14 @@ p {
 }
 
 .scrabbleWords{
-  font-size: clamp(20px, 2.5vw, 30px);
+  font-size: clamp(12px, 1.5vw, 25px);
   text-align: center;
   overflow: scroll;
   overflow-x: hidden;
   height: 50vh;
-  /* margin-left: 20vw; */
   max-height: 50vh;
-  max-width: 50vw;
-  background-color:rgb(147, 175, 150);
+  /* max-width: 50vw; */
+  background-color:rgb(174, 179, 223);
 }
 
 .inputIsNumber{
