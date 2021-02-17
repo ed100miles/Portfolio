@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import Flask, render_template, request, redirect
-from Scrabbler import wordFinder, initialise_board, wordScorer, wordRanker, play_move
+from  Scrabbler import initialise_board, wordFinder, wordScorer, wordRanker, play_move
 from flask_sqlalchemy import SQLAlchemy
 from tqdm import tqdm
 
