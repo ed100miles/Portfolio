@@ -1,5 +1,5 @@
 import os
-
+import cProfile
 dirname = os.path.dirname(__file__)
 
 def initialise_board():
@@ -117,42 +117,44 @@ def wordRanker(words_with_scores):
     return results
 
 def wordFinder(user_input, board):
-    valid_words = set()
-    listOfWords =  ((open(os.path.join(dirname, 'scrabbleWords.txt'))).read()).lower().splitlines()
-    board_letters = set()
+    """ Takes user's letters and board letters as input, outputs valid scrabble words. """
+    valid_words = []
+    board_letters = ""
+    user_input_and_board_letter_combos = set()
 
     for element in board:
-        board_letters.add(element[2])
-
-    for board_letter in board_letters:
-        user_input_and_board_letter = user_input + board_letter.lower()
+        if element[2] != "":
+            user_input_and_board_letter_combos.add(user_input + element[2].lower())
+    user_input_and_board_letter_combos = list(user_input_and_board_letter_combos)
+    for combo in user_input_and_board_letter_combos:
+        # create generator object of words in scrabble dictionary
+        listOfWords =  (theWord for theWord in ((open(os.path.join(dirname, 'scrabbleWords.txt'))).read()).lower().splitlines())
         for theWord in listOfWords:
-            alphabet = "abcdefghijklmnopqrstuvwxyz"
-            user_letters_dict = dict.fromkeys(list(alphabet), 0)
-            listOfWords_dict = dict.fromkeys(list(alphabet), 0)
-
-            for i in range(len(user_input_and_board_letter)):
-                user_letters_dict[user_input_and_board_letter[i]] += 1
-
-            for i in range(len(theWord)):
-                listOfWords_dict[theWord[i]] += 1
-
-            missing_letters = 0
-
-            for x in user_letters_dict:
-            
-                if user_letters_dict[x] < listOfWords_dict[x]:
-                    missing_letters += 1
-                    break
-
-            if missing_letters == 0:
-                valid_words.add(theWord)
-
+            if len(theWord) > len(combo):
+                pass
+            else:
+                missing_letters = 0
+                alphabet = "abcdefghijklmnopqrstuvwxyz"
+                user_letters_dict = dict.fromkeys(list(alphabet), 0)
+                listOfWords_dict = dict.fromkeys(list(alphabet), 0)
+                for i in range(len(combo)):
+                    user_letters_dict[combo[i]] += 1
+                for i in range(len(theWord)):
+                    listOfWords_dict[theWord[i]] += 1
+                for x in user_letters_dict:
+                    if user_letters_dict[x] < listOfWords_dict[x]:
+                        missing_letters += 1
+                        break
+                if missing_letters == 0:
+                    valid_words.append(theWord)
     return valid_words
 
-#board = initialise_board()
-#
-#user_input = ""
+board = initialise_board()
+user_input = "hello"
+board = play_move(True, board, "abcdefghijklmno", 0, 0, "a")
+board = play_move(True, board, "abcdefghijklmno", 0, 0, "d")
+valid_words = wordFinder(user_input, board)
+print(len(valid_words))
 #
 #while user_input != "0":
 #
