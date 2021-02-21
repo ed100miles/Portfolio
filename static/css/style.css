@@ -1,7 +1,7 @@
 /* General attributes */
 
 body{
-  padding-top: 65px;
+  padding-top: 50px;
   margin-left: 5vw;
   margin-right: 5vw;
   background-color: rgb(177, 179, 184);
@@ -10,7 +10,7 @@ body{
 h1{
   text-align: center;
   animation: fadeIn ease 3s;
-  font-size: clamp(30px, 10vw, 60px);
+  font-size: clamp(25px, 8vw, 50px);
 }
 
 p {
@@ -27,7 +27,7 @@ p {
 }
 
 .meImg{
-  padding: 1vh;
+  padding: 2vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -35,7 +35,7 @@ p {
   height:auto;
   width: 50%;
   max-width: 400px;
-  transform: translateX(-5vw);
+  /* transform: translateX(-5vw); */
   /* float: left; */
 }
 

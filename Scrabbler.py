@@ -121,16 +121,24 @@ def wordFinder(user_input, board):
     valid_words = []
     board_letters = ""
     user_input_and_board_letter_combos = set()
-
+    blank_tiles = 0
+    user_letters = ""
+    for char in user_input:
+        if char == "*":
+            blank_tiles += 1
+        elif char.isalpha():
+            user_letters += char.lower()
+        else: 
+            raise TypeError("User input must be letters 'A-Z' or '*' for a blank tile")
     for element in board:
         if element[2] != "":
-            user_input_and_board_letter_combos.add(user_input + element[2].lower())
+            user_input_and_board_letter_combos.add(user_letters + element[2].lower())
     user_input_and_board_letter_combos = list(user_input_and_board_letter_combos)
     for combo in user_input_and_board_letter_combos:
         # create generator object of words in scrabble dictionary
         listOfWords =  (theWord for theWord in ((open(os.path.join(dirname, 'scrabbleWords.txt'))).read()).lower().splitlines())
         for theWord in listOfWords:
-            if len(theWord) > len(combo):
+            if len(theWord) > (len(combo) + blank_tiles):
                 pass
             else:
                 missing_letters = 0
@@ -142,20 +150,20 @@ def wordFinder(user_input, board):
                 for i in range(len(theWord)):
                     listOfWords_dict[theWord[i]] += 1
                 for x in user_letters_dict:
-                    if user_letters_dict[x] < listOfWords_dict[x]:
-                        missing_letters += 1
-                        break
-                if missing_letters == 0:
+                    less_letters = listOfWords_dict[x] - user_letters_dict[x]
+                    if less_letters >= 0:
+                        missing_letters += less_letters
+                if missing_letters <= blank_tiles:
                     valid_words.append(theWord)
     return valid_words
 
 board = initialise_board()
-user_input = "hello"
+user_input = "helL*"
 board = play_move(True, board, "abcdefghijklmno", 0, 0, "a")
 board = play_move(True, board, "abcdefghijklmno", 0, 0, "d")
 valid_words = wordFinder(user_input, board)
 print(len(valid_words))
-#
+
 #while user_input != "0":
 #
 #    user_input = input("What now? \n 1) Find a word \n 2) Define a word \n 3) Play a word \n 4) Show the board \n 5) Reset the board \n 0) Quit \n ---------> ")

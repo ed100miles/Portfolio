@@ -61,13 +61,13 @@ class Definitions(db.Model):
             # print("definition db didn't load properly...")
             # exit()
 
-@app.route('/skills')
-def skills():
-    return render_template('skills.html')
-
 @app.route('/')
 def index():
     return render_template('home.html')
+
+@app.route('/skills')
+def skills():
+    return render_template('skills.html')
 
 @app.route('/scrabbler', methods=['GET', 'POST'])
 def scrabbler():
