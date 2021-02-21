@@ -120,7 +120,7 @@ def wordFinder(user_input, board):
     """ Takes user's letters and board letters as input, outputs valid scrabble words. """
     valid_words = []
     board_letters = ""
-    user_input_and_board_letter_combos = set()
+    user_input_and_board_letter_combos = []
     blank_tiles = 0
     user_letters = ""
     for char in user_input:
@@ -132,8 +132,7 @@ def wordFinder(user_input, board):
             raise TypeError("User input must be letters 'A-Z' or '*' for a blank tile")
     for element in board:
         if element[2] != "":
-            user_input_and_board_letter_combos.add(user_letters + element[2].lower())
-    user_input_and_board_letter_combos = list(user_input_and_board_letter_combos)
+            user_input_and_board_letter_combos.append(user_letters + element[2].lower())
     for combo in user_input_and_board_letter_combos:
         # create generator object of words in scrabble dictionary
         listOfWords =  (theWord for theWord in ((open(os.path.join(dirname, 'scrabbleWords.txt'))).read()).lower().splitlines())
