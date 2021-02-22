@@ -155,12 +155,14 @@ def wordFinder(user_input, board):
                     valid_words.add(theWord)
     return valid_words
 
-board = initialise_board()
-user_input = "helL*"
-board = play_move(True, board, "abcdefghijklmno", 0, 0, "a")
-board = play_move(True, board, "abcdefghijklmno", 0, 0, "d")
-valid_words = wordFinder(user_input, board)
-print(len(valid_words))
+# Run the below code for wordFinder testing
+
+# board = initialise_board()
+# user_input = "helL*"
+# board = play_move(True, board, "abcdefghijklmno", 0, 0, "a")
+# board = play_move(True, board, "abcdefghijklmno", 0, 0, "d")
+# valid_words = wordFinder(user_input, board)
+# print(len(valid_words))
 
 #while user_input != "0":
 #
