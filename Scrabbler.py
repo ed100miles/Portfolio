@@ -1,5 +1,4 @@
 import os
-import cProfile
 dirname = os.path.dirname(__file__)
 
 def initialise_board():
@@ -118,7 +117,7 @@ def wordRanker(words_with_scores):
 
 def wordFinder(user_input, board):
     """ Takes user's letters and board letters as input, outputs valid scrabble words. """
-    valid_words = []
+    valid_words = set()
     board_letters = ""
     user_input_and_board_letter_combos = []
     blank_tiles = 0
@@ -153,7 +152,7 @@ def wordFinder(user_input, board):
                     if less_letters >= 0:
                         missing_letters += less_letters
                 if missing_letters <= blank_tiles:
-                    valid_words.append(theWord)
+                    valid_words.add(theWord)
     return valid_words
 
 board = initialise_board()
