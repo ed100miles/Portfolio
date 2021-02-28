@@ -2,6 +2,7 @@ from datetime import datetime
 from flask import Flask, render_template, request, redirect
 from  Scrabbler import initialise_board, wordFinder, wordScorer, wordRanker, play_move
 from flask_sqlalchemy import SQLAlchemy
+import csv
 from tqdm import tqdm
 
 app = Flask(__name__)
@@ -111,6 +112,18 @@ def definition_page():
     wordDefinition = Definitions.query.filter_by(wordsToDefine=wordToDefine).first()
     wordDefinition = wordDefinition.wordDefinition
     return render_template('definition_page.html', wordToDefine=wordToDefine, wordDefinition=wordDefinition)
+
+@app.route('/catSpot')
+def catSpot():
+    csvPath = 'static/csvs/catSpots.csv'
+    csvFile = open(csvPath, newline='')
+    reader = csv.reader(csvFile)
+    data = []
+    for row in reader:
+        data.append(row)
+    lastCatSpot = data[0][-2]
+    previous_spots = [x for x in data[0][:-2]]
+    return render_template('catSpot.html', lastCatSpot=lastCatSpot, previous_spots=previous_spots)
 
 if __name__ == "__main__":
     app.run(debug=True)

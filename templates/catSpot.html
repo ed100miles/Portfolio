@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<h1>Last Cat Spot: </h1>
+<img src="{{url_for('static', filename='imgs/catSpots/lastCatSpot.jpg')}}" class='catSpotImg' alt='error loading catSpot img'>
+<h1>Seen at: {{lastCatSpot}}</h1>
+
+<h3>Previous Spots:</h3>
+{% for spot in previous_spots %}
+<p>
+    {{spot}}
+</p>
+{% endfor %}
+
+{% endblock %}
+
