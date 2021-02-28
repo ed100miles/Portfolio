@@ -123,6 +123,7 @@ def catSpot():
         data.append(row)
     lastCatSpot = data[0][-2]
     previous_spots = [x for x in data[0][:-2]]
+    previous_spots.reverse()
     return render_template('catSpot.html', lastCatSpot=lastCatSpot, previous_spots=previous_spots)
 
 if __name__ == "__main__":

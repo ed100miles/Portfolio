@@ -19,8 +19,30 @@ p {
   font-size: clamp(20px, 2.5vw, 30px);
 }
 
+i {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+a {
+  color:rgb(22, 61, 134);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover{
+  text-decoration: underline;
+  font-weight: 900;
+  color:rgb(27, 85, 51);
+}
+
+.gitlink {
+  text-align: center;
+}
+
 /* Home.html attributes */
 .img-div{
+  padding-top: 3vh;
   width: 100vw;
   background-color:rgb(36, 57, 95);
   transform: translateX(-5vw);
@@ -142,6 +164,16 @@ p {
   margin-left: 10vw;
   animation: fadeIn ease 3s;
   font-size: clamp(20px, 4vw, 45px);
+}
+
+/* CatSpot */
+
+.catSpotImg {
+  width: 80vw;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 /* Animations */
