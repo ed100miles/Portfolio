@@ -6,58 +6,76 @@
 
 {% block body %}
 <h1>My Skills </h1>
-<!-- <h2 class="subheading">I've built a strong foundation using:</h2> -->
-<div class="fadeIn">
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100 skills-img" src="{{url_for('static', filename='imgs/pythonLogos.png') }}" alt="First slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100 skills-img" src="{{url_for('static', filename='imgs/otherSkillsLogos.png') }}" alt="Second slide">
-      </div>   
-      <div class="carousel-item">
-        <img class="d-block w-100 skills-img" src="{{url_for('static', filename='imgs/webLogos.png') }}" alt="Third slide">
-      </div>   
-      <div class="carousel-item">
-        <img class="d-block w-100 skills-img" src="{{url_for('static', filename='imgs/other.png') }}" alt="Fourth slide">
-      </div>   
-    </div>
-</div>
-</div>
 
 <p>Over the last few years I've learned a lot, including...</p>
 <div class="skills-list-container">
+  <div class="skills-list-sub">
     <ul class="skills-list">
-        <li>Python
-            <ul>
-            <li>Pandas</li>
-            <li>NumPy</li>
-            <li>matplotlib</li>
-            <li>Flask</li>
-            <li>SQLAlchemy</li>
-            <li>OpenCV</li>
-            <li>Pillow</li>
-            <li>PyTorch</li>
-            <li>TensorFlow</li>
-            <li>Keras</li>
-            </ul>
-        </li>
-
-        <li>
-            HTML
-        </li>
-        <li>
-            CSS
-        </li>
-        <li>
-            JavaScript
-        </li>
-        <li>
-            HTML - Jinja
-        </li>
+        Python
+          <ul>
+          <li>Pandas</li>
+          <li>NumPy</li>
+          <li>matplotlib</li>
+          <li>Flask</li>
+          <li>SQLAlchemy</li>
+          <li>OpenCV</li>
+          <li>Pillow</li>
+          <li>PyTorch</li>
+          <li>TensorFlow</li>
+          <li>Keras</li>
+          </ul>
     </ul>
+  </div>
+
+  <div class="skills-list-sub">
+    <ul class="skills-list">
+        Web
+          <ul>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>Javascript</li>
+          <li>Gunicorn</li>
+          <li>Nginx</li>
+          <li>Apache</li>
+          </ul>
+    </ul>
+  </div>
+
+  <div class="skills-list-sub">
+    <ul class="skills-list">
+        And...
+          <ul>
+          <li>Linux</li>
+          <li>Bash</li>
+          <li>Git</li>
+          <li>Github</li>
+          <li>Debugging</li>
+          <li>VS Code</li>
+          <li>Spyder</li>
+          </ul>
+    </ul>
+  </div>
 </div>
+
+<div class="fadeIn">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100 skills-img" src="{{url_for('static', filename='imgs/pythonLogos.png') }}" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100 skills-img" src="{{url_for('static', filename='imgs/otherSkillsLogos.png') }}" alt="Second slide">
+        </div>   
+        <div class="carousel-item">
+          <img class="d-block w-100 skills-img" src="{{url_for('static', filename='imgs/webLogos.png') }}" alt="Third slide">
+        </div>   
+        <div class="carousel-item">
+          <img class="d-block w-100 skills-img" src="{{url_for('static', filename='imgs/other.png') }}" alt="Fourth slide">
+        </div>   
+      </div>
+  </div>
+</div>
+
 
 {% endblock %}
 

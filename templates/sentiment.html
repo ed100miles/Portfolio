@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<h1>Sentiment Analysis</h1>
+<img src="{{url_for('static', filename='imgs/sentiment.png')}}" class='sentimentImg' alt='error loading sentiment img'>
+
+<br>
+
+<p>This project uses Natural Language Programming techniques, sentiment analysis and Twitter streaming, using the TextBlob and Tweepy modules, to track online sentiment toward Joe Biden.</p>
+<p>Tweets are being streamed and their sentiment calculated continually, the graph above will refresh to show this new data every fifteen minutes.</p>
+
+<p class='gitlink'>Read the code: <a href="https://github.com/ed100miles/BlobSent" target="blank"><i class="fab fa-github"></i></a></p>
+
+{% endblock %}
+

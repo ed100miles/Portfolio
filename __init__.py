@@ -119,12 +119,28 @@ def catSpot():
     csvFile = open(csvPath, newline='')
     reader = csv.reader(csvFile)
     data = []
+    previous_spots = []
+
     for row in reader:
-        data.append(row)
-    lastCatSpot = data[0][-2]
-    previous_spots = [x for x in data[0][:-2]]
-    previous_spots.reverse()
+        if len(row) > 1:
+            data.append(row)
+    data.reverse()
+    
+    for x in data:
+        spotTime, confidence = x
+        spotTime = round(float(spotTime))
+        spotTime = datetime.utcfromtimestamp(int(spotTime)).strftime('%d-%m-%Y %H:%M:%S')
+        roundConf = float(confidence)*100
+        roundConf = round(roundConf, 2)
+    
+    previous_spots.append(f'Spotted at: {spotTime}, Confidence: {roundConf}%')
+    lastCatSpot = previous_spots.pop(0)
+
     return render_template('catSpot.html', lastCatSpot=lastCatSpot, previous_spots=previous_spots)
+
+@app.route('/sentiment')
+def sentiment():
+    return render_template('sentiment.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

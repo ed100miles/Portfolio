@@ -7,7 +7,7 @@
 
 <div class="fadeIn">
     <div class="img-div">
-        <h1>Hi! I'm Ed Miles... </h1>
+        <h1 class="home-header">Hi! I'm Ed Miles... </h1>
         <img src="{{url_for('static', filename='/imgs/me.JPG') }}" class="meImg">
     </div>
 
@@ -36,6 +36,9 @@
         <ul style="list-style-type:none;">
             <li>
                 <p><i class="fas fa-cat"></i><a href="{{ url_for ('catSpot')}}">Cat Spot</a> uses a TensorFlow/Keras convolutional neural network I built to help me see when my cats last came home.</p>
+            </li>
+            <li>
+                <p><i class="fas fa-chart-line"></i><a href="{{ url_for ('sentiment')}}">Sentiment</a> uses Natural Language Programming techniques, sentiment analysis and Twitter streaming, using the TextBlob and Tweepy modules, to track online sentiment toward Joe Biden.</p>
             </li>
             <li>
                 <p><i class="fab fa-sistrix"></i><a href="{{ url_for ('scrabbler')}}">Scrabbler</a> is a bit of python code that finds words to help me win at Scrabble. </p>
