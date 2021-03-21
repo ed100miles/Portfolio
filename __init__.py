@@ -4,6 +4,14 @@ from  Scrabbler import initialise_board, wordFinder, wordScorer, wordRanker, pla
 from flask_sqlalchemy import SQLAlchemy
 import csv
 from tqdm import tqdm
+import datetime as dt
+from bokeh.plotting import figure, show, save, output_file
+from bokeh.embed import components
+import bokeh.layouts
+from bokeh.resources import CDN
+from scipy.ndimage.filters import gaussian_filter1d
+import dateutil
+import numpy as np
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///static/flaskFourTest.db'
@@ -140,7 +148,68 @@ def catSpot():
 
 @app.route('/sentiment')
 def sentiment():
-    return render_template('sentiment.html')
+    csvfile = 'static/csvs/tweet_out.csv'
+
+    graph_data = open(csvfile, 'r').read()
+    lines = graph_data.split('\n')
+
+    xs = []
+    ys_mean = []
+
+    bias_skew = 0.15
+    smoothing = 250
+
+    for num, line in enumerate(lines[200:]):
+        if len(line) > 1:
+            if num % 1 == 0:
+                x, y_mean, pos, neg, sent  = line.split(',')
+                x_dt = dt.datetime.utcfromtimestamp(float(x))
+                xs.append(x_dt)
+                ys_mean.append(((float(y_mean))-bias_skew)*100)
+            
+    ys_mean = np.asarray(ys_mean)
+    ys_mean_smooth = gaussian_filter1d(ys_mean, sigma=smoothing)
+
+    p = figure(title="Sentiment",
+                x_axis_label='Time',
+                x_axis_type='datetime',
+                y_axis_label='Joe Biden Sentiment%',
+                plot_width=1000,
+                plot_height=500)
+
+    ys_mean_smooth_pos = []
+    ys_mean_smooth_neg = []
+    for x in ys_mean_smooth:
+        if x > 0:
+            ys_mean_smooth_pos.append(x)
+            ys_mean_smooth_neg.append(0.0)
+        else:
+            ys_mean_smooth_pos.append(0.0)
+            ys_mean_smooth_neg.append(x)
+
+    p.varea(x=xs,
+            y1=0,
+            y2=ys_mean_smooth_pos,
+            fill_color='green',
+            fill_alpha=0.3)
+
+    p.varea(x=xs,
+            y1=0,
+            y2=ys_mean_smooth_neg,
+            fill_color='red',
+            fill_alpha=0.3)            
+    
+    p.line(xs, ys_mean_smooth, legend_label='Mean Sentiment', line_width=2)
+
+    p.sizing_mode="scale_width"
+
+    script, div = components(p)
+    bok_css = CDN.css_files
+    bok_js = CDN.js_files
+    bok_css = bok_css
+    bok_js = bok_js[0]
+
+    return render_template('sentiment.html', script=script, div=div, bok_css=bok_css, bok_js=bok_js)
 
 if __name__ == "__main__":
     app.run(debug=True)
